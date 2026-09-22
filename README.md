@@ -71,6 +71,15 @@ elmo-hikes/
 
 Syed Areeb Shariq -- BCIT CST student with a great passion in going into cybersecurity. Fun fact: I love soccer, and Fishing.
 --- 
+HEAD
+
+Malik M - BCIT CST Student, I'm a cool guy who is funny and extroverted.
+
+Hana - BCIT CST student who enjoys learning programing and building new things. Fun fact : I can spend hours designing something and then change my mind at the last minute.
+
+develop
+
+---
 
 
 ## Acknowledgments
