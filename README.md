@@ -69,6 +69,8 @@ elmo-hikes/
 - **Your Name** - BCIT CST Student with a passion for outdoor adventures and user-friendly applications. Fun fact: Loves solving Rubik's Cubes in under a minute.
 - **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
 
+Syed Areeb Shariq -- BCIT CST student with a great passion in going into cybersecurity. Fun fact: I love soccer, and Fishing.
+--- 
 HEAD
 
 Malik M - BCIT CST Student, I'm a cool guy who is funny and extroverted.
