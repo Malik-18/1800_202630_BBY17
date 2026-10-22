@@ -9,5 +9,12 @@
   },
   "devDependencies": {
     "vite": "^7.0.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "firebase": "^13.1.0"
   }
 }
