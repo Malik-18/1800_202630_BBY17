@@ -2,51 +2,89 @@
 <html lang="en">
 
 <head>
-    <title>My BCIT Project</title>
+    <title>Never Late To Try</title>
     <meta name="comp1800 template" content="My 1800 App">
-
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Web Components for shared navbar and footer layout -->
-    <script type="module" src="/src/components/site-navbar.js"></script>
-    <script type="module" src="/src/components/site-footer.js"></script> 
+    <!--<script type="module" src="/src/components/site-navbar.js"></script>-->
+    <!--<script type="module" src="/src/components/site-footer.js"></script>-->
 </head>
 
-<body>
+<body class="bg-white">
     <!------------------------------>
     <!-- Your HTML Layout go here -->
     <!------------------------------>
 
     <!-- our own navbar goes here -->
-    <site-navbar></site-navbar> 
 
-    <!-- Main content goes here -->
-    <!-- This is the welcome on the landing page, with a login/signup button -->
-    <div class="container">
-        <div class=" px-4 py-5 my-5 text-center">
-            <img class="d-block mx-auto mb-4" src="/images/Botanical Olive Swirl Emblem.png" alt="" width="72" height="57">
-            <h1 class="display-5 fw-bold">Welcome to Never Late To Try, <span id="name-goes-here">my friend!</span></h1>
-            <div class="col-lg-6 mx-auto">
-                <p class="lead mb-4">Join our community of Beginners looking for new Activity to Try.</p>
-                <h2>The view is better, together.</h2>
-                <div class="d-grid justify-content-sm-center">
-                    <!-- Make this button clickable, using onclick event listener -->
-                    <button onclick="window.location.href='login.html'" type="button"
-                        class="btn btn-info btn-lg">Login/Signup</button>
-                </div>
+    <main class="container-fluid p-0">
+
+        <div class="row g-0 min-vh-100">
+
+            <!-- Top image on mobile -->
+            <div class="col-12 d-lg-none order-1">
+                <img src="/images/login-top.jpg" alt="People trying ziplining" class="w-100 object-fit-cover"
+                    style="height: 200px;">
             </div>
+
+            <!-- Welcome section -->
+            <div class="col-12 col-lg-6 order-2 order-lg-1 d-flex align-items-center justify-content-center">
+
+                <div class="text-center px-4 py-4 w-100" style="max-width: 450px;">
+
+                    <h1 class="fw-bold fs-3 mb-3">
+                        Never Late To Try
+                    </h1>
+
+                    <p class="text-secondary mb-4">
+                        Discover new activities at any age
+                    </p>
+
+                    <div class="d-grid gap-3">
+
+                        <a href="/login.html?mode=signup" class="btn btn-secondary rounded-pill py-2">
+                            Get Started
+                        </a>
+
+                        <a href="/login.html?mode=login" class="btn btn-outline-dark rounded-pill py-2">
+                            Log In
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Right image on desktop -->
+            <div class="col-lg-6 d-none d-lg-block order-lg-2">
+                <img src="/images/login-top.jpg" alt="People trying ziplining" class="w-100 h-100 object-fit-cover"
+                    style="min-height: 100vh;">
+            </div>
+
+            <!-- Bottom image on mobile -->
+            <div class="col-12 d-lg-none order-3">
+                <img src="/images/login-bottom.jpg" alt="Friends enjoying outdoor activities"
+                    class="w-100 object-fit-cover" style="height: 180px;">
+            </div>
+
         </div>
-    </div>
+
+    </main>
 
     <!-- our own footer goes here -->
-    <site-footer></site-footer> 
+    <site-footer></site-footer>
 
     <!---------------------------------------------->
     <!-- Your own JavaScript scripts go here      -->
     <!---------------------------------------------->
-    <script type="module" src="/src/app.js"></script>
+    <!--<script type="module" src="/src/app.js"></script>-->
 
 </body>
 
