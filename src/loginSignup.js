@@ -31,11 +31,16 @@ function initAuthUI() {
     const loginForm = document.getElementById('loginForm');
     const signupForm = document.getElementById('signupForm');
     const redirectUrl = 'main.html';
+    const params = new URLSearchParams(window.location.search);
+    const mode = params.get('mode');
+
 
     // --- Helper Functions ---
     // Toggle element visibility
     function setVisible(el, visible) {
-        el.classList.toggle('d-none', !visible);
+        if (el) {
+            el.classList.toggle('d-none', !visible);
+        }
     }
 
     // Show error message with accessibility and auto-hide
@@ -60,21 +65,35 @@ function initAuthUI() {
         if (submitBtn) submitBtn.disabled = disabled;
     }
 
+    function showSignup() {
+        hideError();
+        setVisible(loginView, false);
+        setVisible(signupView, true);
+    }
+
+    function showLogin() {
+        hideError();
+        setVisible(signupView, false);
+        setVisible(loginView, true);
+    }
+
+    if (mode === 'signup') {
+        showSignup();
+    } else {
+        showLogin();
+    }
+
     // --- Event Listeners ---
     // Toggle buttons
     toSignupBtn?.addEventListener('click', (e) => {
         e.preventDefault();
-        hideError();
-        setVisible(loginView, false);
-        setVisible(signupView, true);
+        showSignup();
         signupView?.querySelector('input')?.focus();
     });
 
     toLoginBtn?.addEventListener('click', (e) => {
         e.preventDefault();
-        hideError();
-        setVisible(signupView, false);
-        setVisible(loginView, true);
+        showLogin();
         loginView?.querySelector('input')?.focus();
     });
 
