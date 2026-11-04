@@ -1,0 +1,38 @@
+/* Dark mode fixes for Bootstrap classes that don't adapt on their own. */
+
+[data-bs-theme="dark"] .bg-white {
+    background-color: var(--bs-body-bg) !important;
+}
+
+[data-bs-theme="dark"] .bg-light {
+    background-color: var(--bs-tertiary-bg) !important;
+}
+
+[data-bs-theme="dark"] .text-dark {
+    color: var(--bs-body-color) !important;
+}
+
+/* Filled dark buttons (e.g. "View Details", active filter pill) become light */
+[data-bs-theme="dark"] .btn-dark {
+    --bs-btn-color: #212529;
+    --bs-btn-bg: #f8f9fa;
+    --bs-btn-border-color: #f8f9fa;
+    --bs-btn-hover-color: #212529;
+    --bs-btn-hover-bg: #dee2e6;
+    --bs-btn-hover-border-color: #dee2e6;
+    --bs-btn-active-color: #212529;
+    --bs-btn-active-bg: #dee2e6;
+    --bs-btn-active-border-color: #dee2e6;
+}
+
+/* Outlined dark buttons (e.g. inactive filter pills) get a light outline */
+[data-bs-theme="dark"] .btn-outline-dark {
+    --bs-btn-color: #f8f9fa;
+    --bs-btn-border-color: #f8f9fa;
+    --bs-btn-hover-color: #212529;
+    --bs-btn-hover-bg: #f8f9fa;
+    --bs-btn-hover-border-color: #f8f9fa;
+    --bs-btn-active-color: #212529;
+    --bs-btn-active-bg: #f8f9fa;
+    --bs-btn-active-border-color: #f8f9fa;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Never Late To Try - Settings</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="comp1800 template" content="My 1800 App">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bottom Navbar -->
+    <script type="module" src="/src/components/bottom-navbar.js"></script>
+</head>
+
+<body class="bg-body">
+
+    <main class="container py-4 pb-5 mb-5">
+
+        <!-- Header with back button -->
+        <div class="position-relative text-center mb-4">
+            <a href="profile.html" class="position-absolute top-50 start-0 translate-middle-y text-body fs-3"
+                aria-label="Back to profile">
+                <i class="bi bi-chevron-left"></i>
+            </a>
+            <h1 class="fw-bold fs-3 mb-0">Settings</h1>
+        </div>
+
+        <div class="list-group list-group-flush mx-auto" style="max-width: 480px;">
+
+            <!-- Notifications -->
+            <div class="list-group-item bg-transparent d-flex align-items-center gap-3 py-4">
+                <i class="bi bi-bell-fill fs-3 text-secondary"></i>
+                <label for="notificationsToggle" class="flex-grow-1 fs-5 mb-0">Notifications</label>
+                <div class="form-check form-switch fs-4 mb-0">
+                    <input class="form-check-input" type="checkbox" role="switch" id="notificationsToggle">
+                </div>
+            </div>
+
+            <!-- Preferred language -->
+            <div class="list-group-item bg-transparent d-flex align-items-center gap-3 py-4">
+                <label for="languageSelect" class="fs-5 mb-0">Preferred Language:</label>
+                <select id="languageSelect" class="form-select w-auto">
+                    <option value="en">English</option>
+                    <option value="fr">French</option>
+                    <option value="es">Spanish</option>
+                    <option value="zh">Chinese</option>
+                </select>
+            </div>
+
+            <!-- Help and support -->
+            <a href="#"
+                class="list-group-item list-group-item-action bg-transparent d-flex align-items-center gap-3 py-4">
+                <i class="bi bi-info-circle-fill fs-3 text-secondary"></i>
+                <span class="fs-5">Help and Support</span>
+            </a>
+
+            <!-- Account privacy -->
+            <a href="#"
+                class="list-group-item list-group-item-action bg-transparent d-flex align-items-center gap-3 py-4">
+                <i class="bi bi-lock-fill fs-3 text-secondary"></i>
+                <span class="fs-5">Account Privacy</span>
+            </a>
+
+        </div>
+
+    </main>
+
+    <bottom-navbar></bottom-navbar>
+
+    <script type="module" src="/src/settings.js"></script>
+
+</body>
+
+</html>

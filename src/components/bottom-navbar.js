@@ -1,3 +1,6 @@
+import { applyTheme } from "../theme.js";
+import "../styles/dark-mode.css";
+applyTheme();
 
 class BottomNavbar extends HTMLElement {
   constructor() {
@@ -22,7 +25,7 @@ class BottomNavbar extends HTMLElement {
                         <small>My Activities</small>
                     </a>
 
-                    <a href="#" class="text-center text-dark text-decoration-none">
+                    <a href="/profile.html" class="text-center text-dark text-decoration-none">
                         <i class="bi bi-person-fill fs-4 d-block"></i>
                         <small>You</small>
                     </a>

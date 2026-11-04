@@ -41,8 +41,10 @@
                 Never Late To Try
             </h1>
 
-            <a href="#profile" class="text-dark fs-3" aria-label="Profile">
-                <i class="bi bi-person-circle"></i>
+            <a href="/profile.html" class="text-dark fs-3 d-flex" aria-label="Profile">
+                <i id="headerIcon" class="bi bi-person-circle"></i>
+                <img id="headerImage" class="rounded-circle object-fit-cover d-none" style="width: 1em; height: 1em;"
+                    alt="Profile picture">
             </a>
 
         </div>
@@ -144,6 +146,8 @@
     <!---------------------------------------------->
     <script type="module" src="/src/app.js"></script>
     <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/headerAvatar.js"></script>
+
     <!--<script type="module" src="/src/home.js"></script>-->
 
 </body>
