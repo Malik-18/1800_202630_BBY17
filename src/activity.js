@@ -1,29 +1,62 @@
+
 import { db } from "./firebaseConfig.js";
 import { doc, getDoc } from "firebase/firestore";
 
-// Declare variable: the hike ID from the URL (eachHike.html?docID=abc123)
+// Get the activity ID from the URL
 const params = new URL(window.location.href).searchParams;
-const hikeId = params.get("docID");
+const activityId = params.get("docID");
 
-// Fetch the hike and display its name and image
-async function displayHikeInfo() {
+// Fetch the activity and display its information
+async function displayActivityInfo() {
+
+    const nameElement = document.getElementById("activityName");
+
+    if (!activityId) {
+        nameElement.textContent = "No activity selected.";
+        return;
+    }
+
     try {
-        const hikeRef = doc(db, "hikes", hikeId);
-        const hikeSnap = await getDoc(hikeRef);
+        const activityRef = doc(db, "activities", activityId);
+        const activitySnap = await getDoc(activityRef);
 
-        const hike = hikeSnap.data();
-        const name = hike.name;
-        const code = hike.code;
+        if (!activitySnap.exists()) {
+            nameElement.textContent = "Activity not found.";
+            return;
+        }
 
-        // Update the page
-        document.getElementById("hikeName").textContent = name;
-        const img = document.getElementById("hikeImage");
-        img.src = `./images/${code}.jpg`;
-        img.alt = `${name} image`;
+        const activity = activitySnap.data();
+
+        // Display activity name
+        nameElement.textContent = activity.name;
+
+        // Display activity category
+        document.getElementById("activityCategory").textContent =
+            activity.category;
+
+        // Display activity description
+        document.getElementById("activityDescription").textContent =
+            activity.description;
+
+        // Display activity difficulty
+        document.getElementById("activityDifficulty").textContent =
+            activity.difficulty;
+
+        // Display activity location
+        document.getElementById("activityLocation").textContent =
+            activity.location;
+
+        // Display activity image
+        const img = document.getElementById("activityImage");
+
+        img.src = activity.imageURL;
+        img.alt = `${activity.name} image`;
+
     } catch (error) {
-        console.error("Error loading hike:", error);
-        document.getElementById("hikeName").textContent = "Error loading hike.";
+        console.error("Error loading activity:", error);
+        nameElement.textContent = "Error loading activity.";
     }
 }
 
-displayHikeInfo();
+// Call function when page loads
+displayActivityInfo();

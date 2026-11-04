@@ -2,16 +2,25 @@
 <html lang="en">
 
 <head>
-    <title>My BCIT Project</title>
+    <title>Activity Details - Never Late To Try</title>
     <meta name="comp1800 template" content="My 1800 App">
 
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+
     <!-- Web Components for shared navbar and footer layout -->
-    <script type="module" src="/src/components/site-navbar.js"></script>
-    <script type="module" src="/src/components/site-footer.js"></script> 
+
+    <script type="module" src="/src/components/bottom-navbar.js"></script>
+    <!--<script type="module" src="/src/components/site-navbar.js"></script>
+    <script type="module" src="/src/components/site-footer.js"></script>-->
 </head>
 
 <body>
@@ -24,19 +33,56 @@
     <site-navbar></site-navbar>
 
     <!-- Main content goes here -->
-    <main class="container py-4">
-        <h1 id="hikeName">Loading...</h1>
-        <img id="hikeImage" class="img-fluid rounded mt-3" src="" alt="Hike image">
+    <main class="container py-4 pb-5 mb-5">
+
+        <a href="/discover.html" class="text-dark text-decoration-none">
+            <i class="bi bi-arrow-left"></i> Back to Discover
+        </a>
+
+        <div class="row justify-content-center mt-4">
+
+            <div class="col-12 col-lg-8">
+
+                <img id="activityImage" class="img-fluid rounded-4 w-100 object-fit-cover" style="max-height: 350px;"
+                    alt="Activity image">
+
+                <h1 id="activityName" class="fw-bold mt-4">
+                    Loading...
+                </h1>
+
+                <p id="activityCategory" class="text-secondary"></p>
+
+                <div class="mt-4">
+                    <h2 class="fs-5 fw-bold">About this activity</h2>
+                    <p id="activityDescription"></p>
+                </div>
+
+                <div class="mt-4">
+                    <h2 class="fs-5 fw-bold">Difficulty</h2>
+                    <p id="activityDifficulty"></p>
+                </div>
+
+                <div class="mt-4">
+                    <h2 class="fs-5 fw-bold">Location</h2>
+                    <p id="activityLocation"></p>
+                </div>
+
+            </div>
+
+        </div>
+
     </main>
 
     <!-- our own footer goes here -->
     <!-- <site-footer></site-footer> -->
+    <bottom-navbar></bottom-navbar>
 
+    
     <!---------------------------------------------->
     <!-- Your own JavaScript scripts go here      -->
     <!---------------------------------------------->
-    <script type="module" src="/src/eachHike.js"></script>
     <script type="module" src="/src/app.js"></script>
+    <script type="module" src="/src/activity.js"></script>
 
 </body>
 

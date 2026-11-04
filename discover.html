@@ -2,36 +2,126 @@
 <html lang="en">
 
 <head>
-    <title>My BCIT Project</title>
+    <title>Discover Activities - Never Late To Try</title>
     <meta name="comp1800 template" content="My 1800 App">
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Bottom Navbar Component -->
+    <script type="module" src="/src/components/bottom-navbar.js"></script>
+
     <!-- Web Components for shared navbar and footer layout -->
     <!-- <script type="module" src="/src/components/site-navbar.js"></script> -->
     <!-- <script type="module" src="/src/components/site-footer.js"></script> -->
 </head>
 
-<body>
+<body class="bg-white">
     <!------------------------------>
     <!-- Your HTML Layout go here -->
     <!------------------------------>
 
     <!-- our own navbar goes here -->
     <!-- <site-navbar></site-navbar> -->
-    
-    <!-- Main content goes here -->
 
+    <!-- Main content goes here -->
+    <main class="container py-4 pb-5 mb-5">
+
+        <!-- Page Heading -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="fw-bold fs-3 mb-0">Discover Activities</h1>
+            <a href="/main.html" class="text-dark fs-4" aria-label="Home">
+                <i class="bi bi-house"></i>
+            </a>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="input-group mb-4">
+            <span class="input-group-text bg-light border-0">
+                <i class="bi bi-search"></i>
+            </span>
+
+            <input type="search" id="searchInput" class="form-control bg-light border-0"
+                placeholder="Search activities..." aria-label="Search activities">
+        </div>
+
+        <!-- Category Filters -->
+        <div class="d-flex gap-2 overflow-auto pb-3 mb-3">
+
+            <button class="btn btn-dark rounded-pill category-btn" data-category="All">All</button>
+
+            <button class="btn btn-outline-dark rounded-pill category-btn" data-category="Outdoor">Outdoor</button>
+
+            <button class="btn btn-outline-dark rounded-pill category-btn" data-category="Sport">Sport</button>
+
+            <button class="btn btn-outline-dark rounded-pill category-btn" data-category="Creative">Creative</button>
+
+            <button class="btn btn-outline-dark rounded-pill category-btn" data-category="Wellness">Wellness</button>
+
+            <button class="btn btn-outline-dark rounded-pill category-btn" data-category="Food & Drink">Food &
+                Drink</button>
+
+        </div>
+
+        <!-- Activity Count -->
+        <p id="resultsCount" class="text-secondary small mb-3">
+            Loading activities...
+        </p>
+
+        <!-- Activity Cards from Firestore -->
+        <div id="activities-go-here" class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+        </div>
+
+        <!-- Activity Card Template -->
+        <template id="activityCardTemplate">
+
+            <div class="col">
+                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+
+                    <img class="card-image card-img-top object-fit-cover" style="height: 160px;" alt="Activity image">
+
+                    <div class="card-body">
+
+                        <h2 class="card-title fs-6 fw-bold"></h2>
+
+                        <p class="card-category small text-secondary mb-1"></p>
+
+                        <p class="card-difficulty small mb-3"></p>
+
+                        <a class="read-more btn btn-dark btn-sm rounded-pill" href="#">
+                            View Details
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+        </template>
+
+    </main>
     <!-- our own footer goes here -->
     <!-- <site-footer></site-footer> -->
-    
+    <!-- Bottom Navigation -->
+    <bottom-navbar></bottom-navbar>
+
     <!---------------------------------------------->
     <!-- Your own JavaScript scripts go here      -->
     <!---------------------------------------------->
 
+
+    <!-- JavaScript -->
+    
+
     <script type="module" src="/src/app.js"></script>
+    <script type="module" src="/src/discover.js"></script>
+    <script type="module" src="/src/seedActivities.js"></script>
+    <script type="module" src="/src/activity.js"></script>
+
 
 </body>
 
