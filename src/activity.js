@@ -1,4 +1,3 @@
-
 import { db } from "./firebaseConfig.js";
 import { doc, getDoc } from "firebase/firestore";
 
@@ -15,6 +14,10 @@ async function displayActivityInfo() {
         nameElement.textContent = "No activity selected.";
         return;
     }
+
+    // Link the Expectations button to this activity's expectations page
+    document.getElementById("expectationsBtn").href =
+        `/expectations.html?docID=${encodeURIComponent(activityId)}`;
 
     try {
         const activityRef = doc(db, "activities", activityId);
@@ -41,7 +44,7 @@ async function displayActivityInfo() {
         // Display activity difficulty
         document.getElementById("activityDifficulty").textContent =
             activity.difficulty;
-            
+
         // Display activity location
         document.getElementById("activityLocation").textContent =
             activity.location;
