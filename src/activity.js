@@ -41,7 +41,7 @@ async function displayActivityInfo() {
         // Display activity difficulty
         document.getElementById("activityDifficulty").textContent =
             activity.difficulty;
-
+            
         // Display activity location
         document.getElementById("activityLocation").textContent =
             activity.location;
