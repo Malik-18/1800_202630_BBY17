@@ -3,7 +3,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
 
 import { db } from "./firebaseConfig.js";
-import { collection, getDocs } from "firebase/firestore";
+import { onAuthReady } from "./authentication.js";
+import {
+  doc,
+  onSnapshot,
+  getDoc,
+  collection,
+  getDocs,
+  addDoc,
+  serverTimestamp,
+  setDoc,
+  arrayUnion,
+  arrayRemove
+} from "firebase/firestore";
+
+
+let currentUser = null;   // who is logged in
+let favourites = [];      // the hike IDs they've favourited
+
 
 // Store activities after reading from Firestore
 let allActivities = [];
@@ -73,6 +90,8 @@ function displayActivities(activities) {
     // Link to activity details
     newCard.querySelector(".read-more").href =
       `/activity.html?docID=${encodeURIComponent(activity.id)}`;
+
+    setupHeart(newCard, activity.id);
 
     // Add card to page
     activitiesContainer.appendChild(newCard);
@@ -150,6 +169,69 @@ if (categoryFromURL) {
   }
 }
 
+// Runs once Firebase knows if someone is logged in
+onAuthReady(async function (user) {
+  if (!user) {
+    location.href = "index.html";                              // Not logged in → back to start
+  } else {
+    currentUser = user;                                        // 1. Remember who's logged in
+    const userDoc = await getDoc(doc(db, "users", user.uid));  // 2. Get their user doc
 
-// Load activities when page opens
-displayCardsDynamically();
+    // 3. Load user's favourites, or use an empty array if none exist
+    favourites = userDoc.data()?.favourites || [];   // uses "optional chaining" (?.)
+
+    // Beginner version of the line above:
+    // if (userDoc.exists() && userDoc.data().favourites) {
+    //   favourites = userDoc.data().favourites;
+    // } else {
+    //   favourites = [];
+    // }
+
+    displayCardsDynamically();                                 // 4. Draw the cards
+  }
+});
+
+
+
+function setupHeart(card, hikeID) {
+
+  // [FRONT END] Find the heart icon inside this card
+  const heart = card.querySelector(".fav-btn");
+
+  // [FRONT END] Already a favourite? Fill the heart.
+  //             (favourites was read from Firestore in Step 2.3)
+  if (favourites.includes(hikeID)) {
+    heart.classList.replace("bi-heart", "bi-heart-fill");
+  }
+
+  // Connect it: "heart, when you are clicked, toggle this hike"
+  heart.addEventListener("click", function () {
+    toggleFavourite(heart, hikeID);
+  });
+}
+
+
+// ------------------------------------------------------------
+async function toggleFavourite(heart, hikeID) {
+
+  // [BACK END] The address of the logged-in user's document in Firestore
+  const userRef = doc(db, "users", currentUser.uid);
+
+  // [FRONT END] Is the heart filled right now?
+  if (heart.classList.contains("bi-heart-fill")) {
+
+    // Filled → REMOVE from favourites
+    // [BACK END] Remove this hike's ID from the user's favourites array
+    await setDoc(userRef, { favourites: arrayRemove(hikeID) }, { merge: true });
+    // [FRONT END] Show the empty heart
+    heart.classList.replace("bi-heart-fill", "bi-heart");
+
+  } else {
+
+    // Empty → ADD to favourites
+    // [BACK END] Add this hike's ID to the user's favourites array
+    await setDoc(userRef, { favourites: arrayUnion(hikeID) }, { merge: true });
+    // [FRONT END] Show the filled heart
+    heart.classList.replace("bi-heart", "bi-heart-fill");
+  }
+}

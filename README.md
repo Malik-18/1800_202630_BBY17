@@ -2,7 +2,20 @@
 
 
 ## Overview
-Elmo Hikes is a client-side JavaScript web application that helps users discover and explore hiking trails. The app displays a curated list of hike trails, each with details such as name, location, difficulty, and an image. Users can browse the list and mark their favorite trails for easy access later.
+Our App Idea :
+Our app is for people who want to try new activities but do not know where to start, what to expect, or feel nervous trying something for the first time.
+The goal is to help people go from:
+“I want to try this someday”
+to
+“I actually tried it.”
+
+
+How It Connects to “Older and Wiser”
+Users learn from people who already tried the activity.
+Then, after trying it themselves, they share what they learned with the next beginner.
+So the cycle is:
+Beginner → Experience → Learn → Share → Help the next beginner
+
 
 Developed for the COMP 1800 course, this project applies User-Centred Design practices and agile project management, and demonstrates integration with Firebase backend services for storing user favorites.
 
@@ -11,10 +24,36 @@ Developed for the COMP 1800 course, this project applies User-Centred Design pra
 
 ## Features
 
-- Browse a list of curated hiking trails with images and details
-- Mark and unmark trails as favorites
-- View a personalized list of favorite hikes
-- Responsive design for desktop and mobile
+
+**Discover Activities**
+- Browse beginner friendly activities like hiking, pottery, climbing, and kayaking.
+- Explore different activity categories.
+
+**Search and Filter**
+- Search activities by name or category.
+- Filter activities by location, difficulty, date, or time.
+
+**Activity Details**
+- View activity descriptions, location, difficulty, and schedule.
+- Learn what to bring and what to expect before joining.
+
+**First-Timer Information**
+- See how many beginners are joining.
+- Read beginner tips and shared experiences.
+
+**Join and Save Activities**
+- Join activities or save them for later.
+- Add activities to a "Want to Try" list.
+
+**My Firsts**
+- Track activities in three groups:
+  - Want to Try
+  - Joined
+  - Completed
+
+**Share Experience**
+- Share what surprised you and what you learned.
+- Give tips to help other beginners feel more confident.
 
 ---
 
@@ -25,6 +64,13 @@ Developed for the COMP 1800 course, this project applies User-Centred Design pra
 - **Build Tool**: [Vite](https://vitejs.dev/)
 - **Backend**: Firebase for hosting
 - **Database**: Firestore
+
+---
+
+
+## Images Used
+
+- **Websites** : https://unsplash.com/
 
 ---
 

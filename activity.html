@@ -42,6 +42,25 @@
         <div class="row justify-content-center mt-4">
 
             <div class="col-12 col-lg-8">
+                <!-- Activity Navigation Buttons -->
+                <div class="d-flex justify-content-center gap-3 mb-4">
+
+                    <a id="firstTimersBtn" href="#" class="btn btn-light rounded-4 text-center p-3">
+                        <i class="bi bi-people-fill fs-3 d-block"></i>
+                        First Timers
+                    </a>
+
+                    <a id="expectationsBtn" href="#" class="btn btn-light rounded-4 text-center p-3">
+                        <i class="bi bi-list-check fs-3 d-block"></i>
+                        Expectations
+                    </a>
+
+                    <a id="reviewsBtn" href="#" class="btn btn-light rounded-4 text-center p-3">
+                        <i class="bi bi-star fs-3 d-block"></i>
+                        Reviews
+                    </a>
+
+                </div>
 
                 <!-- Extra info buttons (Expectations link is set in activity.js) -->
                 <div class="d-flex gap-3 mb-4">
@@ -89,6 +108,19 @@
                     <h2 class="fs-5 fw-bold">Location</h2>
                     <p id="activityLocation"></p>
                 </div>
+                <div class="mt-4">
+                    <h2 class="fs-5 fw-bold">
+                        <i class="bi bi-clock"></i> Duration
+                    </h2>
+                    <p id="activityDuration"></p>
+                </div>
+
+                <div class="mt-4">
+                    <h2 class="fs-5 fw-bold">
+                        <i class="bi bi-cash"></i> Price
+                    </h2>
+                    <p id="activityPrice"></p>
+                </div>
 
             </div>
 
@@ -100,12 +132,13 @@
     <!-- <site-footer></site-footer> -->
     <bottom-navbar></bottom-navbar>
 
-    
+
     <!---------------------------------------------->
     <!-- Your own JavaScript scripts go here      -->
     <!---------------------------------------------->
     <script type="module" src="/src/app.js"></script>
     <script type="module" src="/src/activity.js"></script>
+    <script type="module" src="/src/seedActivities.js"></script>
 
 </body>
 

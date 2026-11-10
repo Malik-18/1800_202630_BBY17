@@ -5,6 +5,22 @@ import { doc, getDoc } from "firebase/firestore";
 const params = new URL(window.location.href).searchParams;
 const activityId = params.get("docID");
 
+//---------------------MAIN ACTIVITIES BUTTON------------------------//
+
+if (activityId) {
+    document.getElementById("firstTimersBtn").href =
+        `/first-timers.html?docID=${encodeURIComponent(activityId)}`;
+
+    document.getElementById("expectationsBtn").href =
+        `/expectations.html?docID=${encodeURIComponent(activityId)}`;
+
+    document.getElementById("reviewsBtn").href =
+        `/reviews.html?docID=${encodeURIComponent(activityId)}`;
+}
+
+//----------------------------------------------------------------------//
+
+
 // Fetch the activity and display its information
 async function displayActivityInfo() {
 
@@ -48,6 +64,18 @@ async function displayActivityInfo() {
         // Display activity location
         document.getElementById("activityLocation").textContent =
             activity.location;
+
+        // Display activity duration
+        document.getElementById("activityDuration").textContent =
+            activity.duration ?? "Not specified";
+
+        // Display activity price
+        document.getElementById("activityPrice").textContent =
+            activity.price == null
+                ? "Not specified"
+                : Number(activity.price) === 0
+                    ? "Free"
+                    : `$${activity.price} CAD`;
 
         // Display activity image
         const img = document.getElementById("activityImage");

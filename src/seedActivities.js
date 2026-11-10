@@ -37,25 +37,31 @@ import {
     collection,
     getDocs,
     addDoc,
+    updateDoc,
     serverTimestamp
 } from "firebase/firestore";
 
 
 // Add sample activities to Firestore
-async function addActivityData() {
-    const activitiesRef = collection(db, "activities");
 
-    console.log("Adding sample activity data...");
+//-------------------THIS FUNCTION IS NOT NEEDED NOW---------------
 
-    for (const activity of activities) {
-        await addDoc(activitiesRef, {
-            ...activity,
-            last_updated: serverTimestamp()
-        });
+// async function addActivityData() {
+//     const activitiesRef = collection(db, "activities");
 
-        console.log("Added:", activity.name);
-    }
-}
+//     console.log("Adding sample activity data...");
+
+//     for (const activity of activities) {
+//         await addDoc(activitiesRef, {
+//             ...activity,
+//             last_updated: serverTimestamp()
+//         });
+
+//         console.log("Added:", activity.name);
+//     }
+// }
+
+//------------------------------------------------------------------
 
 
 
@@ -96,4 +102,36 @@ async function seedActivities() {
     }
 }
 
-seedActivities();
+//seedActivities();
+// seedActivities();
+updateActivityDetails();
+
+async function updateActivityDetails() {
+    const activitiesRef = collection(db, "activities");
+
+    try {
+        const querySnapshot = await getDocs(activitiesRef);
+
+        for (const docSnap of querySnapshot.docs) {
+            const existingActivity = docSnap.data();
+
+            const matchingActivity = activities.find(
+                activity => activity.name === existingActivity.name
+            );
+
+            if (matchingActivity) {
+                await updateDoc(docSnap.ref, {
+                    price: matchingActivity.price,
+                    duration: matchingActivity.duration
+                });
+
+                console.log("Updated:", existingActivity.name);
+            }
+        }
+
+        console.log("Finished updating activities!");
+
+    } catch (error) {
+        console.error("Error updating activities:", error);
+    }
+}
