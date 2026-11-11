@@ -31,10 +31,8 @@ async function displayActivityInfo() {
         return;
     }
 
-    // Link the Expectations button to this activity's expectations page
-    document.getElementById("expectationsBtn").href =
-        `/expectations.html?docID=${encodeURIComponent(activityId)}`;
 
+    
     try {
         const activityRef = doc(db, "activities", activityId);
         const activitySnap = await getDoc(activityRef);
