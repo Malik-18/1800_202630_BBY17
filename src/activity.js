@@ -9,7 +9,7 @@ const activityId = params.get("docID");
 
 if (activityId) {
     document.getElementById("firstTimersBtn").href =
-        `/first-timers.html?docID=${encodeURIComponent(activityId)}`;
+        `/firstTimers.html?docID=${encodeURIComponent(activityId)}`;
 
     document.getElementById("expectationsBtn").href =
         `/expectations.html?docID=${encodeURIComponent(activityId)}`;
