@@ -28,6 +28,8 @@
     <main class="container py-4 pb-5 mb-5">
 
         <!-- Back Button and Title -->
+
+        <!-- Back Button and Title -->
         <div class="d-flex align-items-center mb-4">
 
             <a id="backToActivity" href="/discover.html" class="text-dark fs-3 me-4" aria-label="Back to activity">
@@ -46,41 +48,16 @@
             </h2>
 
             <p id="firstTimersCount" class="small text-secondary">
-                Other people are planning to try this
-                activity for the first time, just like you.
+                Loading First Timers...
             </p>
 
         </div>
 
         <!-- Participants -->
-        <!-- Placeholder avatars until Firestore is connected -->
         <div id="firstTimersList" class="row row-cols-3 g-3 text-center mb-5">
-
-            <div class="col">
-                <i class="bi bi-person-circle text-secondary" style="font-size: 65px;"></i>
-            </div>
-
-            <div class="col">
-                <i class="bi bi-person-circle text-secondary" style="font-size: 65px;"></i>
-            </div>
-
-            <div class="col">
-                <i class="bi bi-person-circle text-secondary" style="font-size: 65px;"></i>
-            </div>
-
-            <div class="col">
-                <i class="bi bi-person-circle text-secondary" style="font-size: 65px;"></i>
-            </div>
-
-            <div class="col">
-                <i class="bi bi-person-circle text-secondary" style="font-size: 65px;"></i>
-            </div>
-
-            <div class="col">
-                <i class="bi bi-person-circle text-secondary" style="font-size: 65px;"></i>
-            </div>
-
         </div>
+
+        <!-- Overview -->
 
         <!-- Overview -->
         <section class="mt-5">
@@ -145,27 +122,30 @@
     <!-- Your own JavaScript scripts go here      -->
     <!---------------------------------------------->
 
-    <script type="module" src="/src/app.js"></script>
-    <script type="module" src="/src/app.js"></script>
 
-    < <script>
+    <script type="module" src="/src/app.js"></script>
+    <script type="module" src="/src/firstTimers.js"></script>
+
+    <!-- ------------------------for when we dont have access to firestore-------------------------------- -->
+    <!-- 
+    <script>
         // Get the activity ID from the URL
         const params = new URLSearchParams(window.location.search);
         const activityId = params.get("docID");
 
         // Return to the selected activity
         if (activityId) {
-        document.getElementById("backToActivity").href =
-        `/activity.html?docID=${encodeURIComponent(activityId)}`;
+            document.getElementById("backToActivity").href =
+                `/activity.html?docID=${encodeURIComponent(activityId)}`;
         }
 
         // Join functionality will be added with Firestore
         document.getElementById("joinFirstTimersBtn")
-        .addEventListener("click", function () {
-        document.getElementById("joinStatus").textContent =
-        "Joining First Timers will be available soon!";
-        });
-        </script>
+            .addEventListener("click", function () {
+                document.getElementById("joinStatus").textContent =
+                    "Joining First Timers will be available soon!";
+            });
+    </script> -->
 
 </body>
 
