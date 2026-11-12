@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>What to Expect - Never Late To Try</title>
+    <meta name="comp1800 template" content="My 1800 App">
+
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- Bottom Navbar Component -->
+    <script type="module" src="/src/components/bottom-navbar.js"></script>
+</head>
+
+<body class="bg-white">
+
+    <!-- Main content goes here -->
+    <main class="container py-4 pb-5 mb-5">
+
+        <!-- Header with back button (goes back to the activity details page) -->
+        <div class="position-relative text-center mb-4">
+            <a id="backLink" href="/discover.html"
+                class="position-absolute top-50 start-0 translate-middle-y text-dark fs-3" aria-label="Back to activity">
+                <i class="bi bi-chevron-left"></i>
+            </a>
+            <h1 class="fw-bold fs-3 mb-0">What to expect</h1>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-8">
+
+                <img id="activityImage" class="img-fluid rounded-4 w-100 object-fit-cover" style="max-height: 250px;"
+                    alt="Activity image">
+
+                <p id="activityName" class="fw-bold fs-5 mt-3 mb-3"></p>
+
+                <!-- Accordion: only one section is open at a time -->
+                <div class="accordion accordion-flush border rounded-4 overflow-hidden" id="expectationsAccordion"
+                    style="--bs-accordion-active-bg: transparent; --bs-accordion-active-color: inherit; --bs-accordion-btn-focus-box-shadow: none;">
+
+                    <!-- What you'll do -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseDo">
+                                <i class="bi bi-check-circle me-3"></i>What you'll do
+                            </button>
+                        </h2>
+                        <div id="collapseDo" class="accordion-collapse collapse"
+                            data-bs-parent="#expectationsAccordion">
+                            <div id="doText" class="accordion-body small"></div>
+                        </div>
+                    </div>
+
+                    <!-- What to bring -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseBring">
+                                <i class="bi bi-check-circle me-3"></i>What to bring
+                            </button>
+                        </h2>
+                        <div id="collapseBring" class="accordion-collapse collapse"
+                            data-bs-parent="#expectationsAccordion">
+                            <div id="bringText" class="accordion-body small"></div>
+                        </div>
+                    </div>
+
+                    <!-- Requirements -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseRequirements">
+                                <i class="bi bi-check-circle me-3"></i>Requirements
+                            </button>
+                        </h2>
+                        <div id="collapseRequirements" class="accordion-collapse collapse"
+                            data-bs-parent="#expectationsAccordion">
+                            <div id="requirementsText" class="accordion-body small"></div>
+                        </div>
+                    </div>
+
+                    <!-- Safety information -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseSafety">
+                                <i class="bi bi-check-circle me-3"></i>Safety information
+                            </button>
+                        </h2>
+                        <div id="collapseSafety" class="accordion-collapse collapse"
+                            data-bs-parent="#expectationsAccordion">
+                            <div id="safetyText" class="accordion-body small"></div>
+                        </div>
+                    </div>
+
+                    <!-- How to prepare -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapsePrepare">
+                                <i class="bi bi-check-circle me-3"></i>How to prepare
+                            </button>
+                        </h2>
+                        <div id="collapsePrepare" class="accordion-collapse collapse"
+                            data-bs-parent="#expectationsAccordion">
+                            <div id="prepareText" class="accordion-body small"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Bottom Navigation -->
+    <bottom-navbar></bottom-navbar>
+
+    <!---------------------------------------------->
+    <!-- Your own JavaScript scripts go here      -->
+    <!---------------------------------------------->
+    <script type="module" src="/src/app.js"></script>
+    <script type="module" src="/src/expectations.js"></script>
+
+</body>
+
+</html>

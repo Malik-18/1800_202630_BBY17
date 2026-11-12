@@ -1,4 +1,21 @@
+# macOS
 .DS_Store
+
+# Logs
+*.log
 *.logs
+
+# Dependencies
 node_modules/
+
+# VS Code
 .vscode/
+
+# Environment variables
+.env
+.env.*
+!.env_template
+!.env.example
+
+# Build files
+dist/
