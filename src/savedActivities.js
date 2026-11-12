@@ -1,45 +1,61 @@
 
 import { db } from "./firebaseConfig.js";
 import { onAuthReady } from "./authentication.js";
+
 import {
   doc,
   getDoc,
   collection,
-  getDocs
+  getDocs,
+  setDoc,
+  arrayRemove
 } from "firebase/firestore";
 
-// HTML elements
 const savedList = document.getElementById("savedActivitiesList");
 
-// Wait until Firebase checks the logged-in user
+let currentUser = null;
+let favourites = [];
+
+// Check login and load saved activities
 onAuthReady(async function (user) {
 
   if (!user) {
-    window.location.href = "index.html";
+    location.href = "index.html";
     return;
   }
 
+  currentUser = user;
+
   try {
-    // Get the logged-in user's document
-    const userRef = doc(db, "users", user.uid);
-    const userSnap = await getDoc(userRef);
+    const userSnap = await getDoc(doc(db, "users", user.uid));
+    favourites = userSnap.data()?.favourites || [];
 
-    // Get the user's favourite activity IDs
-    const favourites = userSnap.data()?.favourites || [];
+    await displaySavedActivities();
 
-    // Get all activities from Firestore
-    const activitiesRef = collection(db, "activities");
-    const activitiesSnap = await getDocs(activitiesRef);
+  } catch (error) {
+    console.error("Error loading favourites:", error);
+    savedList.textContent = "Could not load saved activities.";
+  }
+});
 
-    // Clear loading message
+
+// Display saved activities
+async function displaySavedActivities() {
+
+  try {
+    const activitiesSnap = await getDocs(
+      collection(db, "activities")
+    );
+
     savedList.innerHTML = "";
 
     let savedCount = 0;
 
     activitiesSnap.forEach(function (activityDoc) {
 
-      // Only display favourited activities
-      if (!favourites.includes(activityDoc.id)) {
+      const activityId = activityDoc.id;
+
+      if (!favourites.includes(activityId)) {
         return;
       }
 
@@ -47,17 +63,19 @@ onAuthReady(async function (user) {
 
       const activity = activityDoc.data();
 
-      // Create a Bootstrap card
+      // Card column
       const col = document.createElement("div");
       col.className = "col-12 col-md-6";
 
+      // Card
       const card = document.createElement("div");
-      card.className = "card rounded-4 overflow-hidden h-100";
+      card.className =
+        "card rounded-4 overflow-hidden h-100 position-relative";
 
-      // Activity image
+      // Image
       const img = document.createElement("img");
       img.className = "card-img-top";
-      img.src = activity.imageURL;
+      img.src = activity.imageURL || "";
       img.alt = `${activity.name} image`;
       img.style.height = "180px";
       img.style.objectFit = "cover";
@@ -72,12 +90,12 @@ onAuthReady(async function (user) {
 
       const category = document.createElement("p");
       category.className = "text-secondary small";
-      category.textContent = activity.category;
+      category.textContent = activity.category || "";
 
       const link = document.createElement("a");
       link.className = "btn btn-outline-dark rounded-pill";
       link.href =
-        `/activity.html?docID=${encodeURIComponent(activityDoc.id)}`;
+        `/activity.html?docID=${encodeURIComponent(activityId)}`;
       link.textContent = "View Activity";
 
       body.appendChild(name);
@@ -86,12 +104,67 @@ onAuthReady(async function (user) {
 
       card.appendChild(img);
       card.appendChild(body);
-      col.appendChild(card);
 
+      // Filled heart (already saved)
+      const heartButton = document.createElement("button");
+      heartButton.type = "button";
+      heartButton.className =
+        "btn btn-light rounded-circle position-absolute top-0 end-0 m-2 shadow-sm";
+      heartButton.setAttribute("aria-label", "Unsave activity");
+
+      const heartIcon = document.createElement("i");
+      heartIcon.className = "bi bi-heart-fill fs-5";
+
+      heartButton.appendChild(heartIcon);
+
+      // Unlike: remove from favourites
+      heartButton.addEventListener("click", async function () {
+
+        if (!currentUser || heartButton.disabled) {
+          return;
+        }
+
+        heartButton.disabled = true;
+
+        try {
+          await setDoc(
+            doc(db, "users", currentUser.uid),
+            {
+              favourites: arrayRemove(activityId)
+            },
+            {
+              merge: true
+            }
+          );
+
+          // Update local array
+          favourites = favourites.filter(function (id) {
+            return id !== activityId;
+          });
+
+          // Remove card from Saved page
+          col.remove();
+
+          // Show message if no saved activities remain
+          if (savedList.children.length === 0) {
+            savedList.textContent =
+              "You haven't saved any activities yet.";
+          }
+
+        } catch (error) {
+          console.error("Error removing favourite:", error);
+          alert("Could not remove activity. Please try again.");
+
+        } finally {
+          heartButton.disabled = false;
+        }
+      });
+
+      card.appendChild(heartButton);
+      col.appendChild(card);
       savedList.appendChild(col);
     });
 
-    // If no saved activities
     if (savedCount === 0) {
       savedList.textContent =
         "You haven't saved any activities yet.";
@@ -101,7 +174,7 @@ onAuthReady(async function (user) {
     console.error("Error loading saved activities:", error);
     savedList.textContent = "Could not load saved activities.";
   }
-});
+}
 
 
 // Navigation tabs

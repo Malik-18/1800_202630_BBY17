@@ -1,5 +1,12 @@
 import { db } from "./firebaseConfig.js";
-import { doc, getDoc } from "firebase/firestore";
+import { onAuthReady } from "./authentication.js";
+import {
+    doc,
+    getDoc,
+    setDoc,
+    arrayUnion,
+    arrayRemove
+} from "firebase/firestore";
 
 // Get the activity ID from the URL
 const params = new URL(window.location.href).searchParams;
@@ -32,7 +39,7 @@ async function displayActivityInfo() {
     }
 
 
-    
+
     try {
         const activityRef = doc(db, "activities", activityId);
         const activitySnap = await getDoc(activityRef);
@@ -89,3 +96,90 @@ async function displayActivityInfo() {
 
 // Call function when page loads
 displayActivityInfo();
+
+
+/* ---------------- SAVE TO TRY ---------------- */
+
+const saveButton = document.getElementById("saveToTryBtn");
+
+onAuthReady(async function (user) {
+
+    if (!saveButton) return;
+
+    if (!user) {
+        saveButton.disabled = true;
+        return;
+    }
+
+    if (!activityId) {
+        saveButton.disabled = true;
+        return;
+    }
+
+    const userRef = doc(db, "users", user.uid);
+
+    try {
+        // Read the user's saved activities
+        const userSnap = await getDoc(userRef);
+        let favourites = userSnap.data()?.favourites || [];
+
+        // Display the correct button state
+        function updateSaveButton() {
+            if (favourites.includes(activityId)) {
+                saveButton.innerHTML =
+                    '<i class="bi bi-check-lg me-2"></i>Saved to Try';
+            } else {
+                saveButton.innerHTML =
+                    '<i class="bi bi-heart me-2"></i>Save to Try';
+            }
+        }
+
+        updateSaveButton();
+        saveButton.disabled = false;
+
+        // Save or unsave when clicked
+        saveButton.onclick = async function () {
+
+            saveButton.disabled = true;
+
+            try {
+                if (favourites.includes(activityId)) {
+
+                    // Remove from favourites
+                    await setDoc(
+                        userRef,
+                        { favourites: arrayRemove(activityId) },
+                        { merge: true }
+                    );
+
+                    favourites = favourites.filter(
+                        id => id !== activityId
+                    );
+
+                } else {
+
+                    // Add to favourites
+                    await setDoc(
+                        userRef,
+                        { favourites: arrayUnion(activityId) },
+                        { merge: true }
+                    );
+
+                    favourites.push(activityId);
+                }
+
+                updateSaveButton();
+
+            } catch (error) {
+                console.error("Error saving activity:", error);
+                alert("Could not update saved activities.");
+            } finally {
+                saveButton.disabled = false;
+            }
+        };
+
+    } catch (error) {
+        console.error("Error loading favourites:", error);
+        saveButton.disabled = true;
+    }
+});
