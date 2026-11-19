@@ -1,4 +1,4 @@
-# Never Late To Try
+# Elmo Hikes
 
 
 ## Overview
@@ -22,46 +22,48 @@ Developed for the COMP 1800 course, this project applies User-Centred Design pra
 ---
 
 
-
 ## Features
 
-### Discover Activities
-- Browse beginner-friendly activities such as hiking, pottery, climbing, and kayaking.
-- Explore activities from different categories.
-- View individual activity details.
 
-### What to Expect
-- Read beginner-friendly information before trying an activity.
-- Learn what to bring, what happens during the activity, and how to prepare.
-- Review safety information and participation requirements.
+**Discover Activities**
+- Browse beginner friendly activities like hiking, pottery, climbing, and kayaking.
+- Explore different activity categories.
 
-### User Authentication
-- Create an account and log in using Firebase Authentication.
-- Access personal features through a user account.
+**Search and Filter**
+- Search activities by name or category.
+- Filter activities by location, difficulty, date, or time.
 
-### My Activities
-- Save activities to try later.
-- View saved activities in one place.
-- Mark activities as completed.
-- Undo a completed activity if needed.
-- Store saved and completed activities using Cloud Firestore.
+**Activity Details**
+- View activity descriptions, location, difficulty, and schedule.
+- Learn what to bring and what to expect before joining.
 
-### User Profile
-- View and update personal profile information.
+**First-Timer Information**
+- See how many beginners are joining.
+- Read beginner tips and shared experiences.
 
+**Join and Save Activities**
+- Join activities or save them for later.
+- Add activities to a "Want to Try" list.
+
+**My Firsts**
+- Track activities in three groups:
+  - Want to Try
+  - Joined
+  - Completed
+
+**Share Experience**
+- Share what surprised you and what you learned.
+- Give tips to help other beginners feel more confident.
 
 ---
 
 
-
 ## Technologies Used
 
-- **Frontend:** HTML, CSS, JavaScript, Bootstrap
-- **Build Tool:** Vite
-- **Backend Services:** Firebase
-- **Authentication:** Firebase Authentication for user login and signup
-- **Database:** Cloud Firestore for storing activities, user profiles, favourites, and completed activities
-- **Version Control:** Git and GitHub
+- **Frontend**: HTML, CSS, JavaScript
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Backend**: Firebase for hosting
+- **Database**: Firestore
 
 ---
 
@@ -73,89 +75,39 @@ Developed for the COMP 1800 course, this project applies User-Centred Design pra
 ---
 
 
-
 ## Usage
 
 To run the application locally:
 
-1. Clone the repository.
-2. Install dependencies by running `npm install` in the project root directory.
-3. Set up the required Firebase environment variables using `.env_template`.
-4. Start the development server by running `npm run dev`.
-5. Open the local address shown in the terminal (usually `http://localhost:5173`).
+1.  **Clone** the repository.
+2.  **Install dependencies** by running `npm install` in the project root directory.
+3.  **Start the development server** by running the command: `npm run dev`.
+4.  Open your browser and visit the local address shown in your terminal (usually `http://localhost:5173` or similar).
 
 Once the application is running:
 
-1. Create an account or log in.
-2. Browse beginner-friendly activities on the Discover page.
-3. Select an activity to view its details.
-4. Visit the What to Expect page to learn about preparation, equipment, requirements, and safety.
-5. Save activities you are interested in.
-6. Open My Activities to view your saved activities.
-7. Mark an activity as completed after trying it.
-8. View or update your profile.
-
+1.  Browse the list of hiking trails displayed on the main page.
+2.  Click the heart icon (or similar) to mark a trail as a favorite.
+3.  View your favorite hikes in the favorites section.
 
 ---
 
 
-
 ## Project Structure
 
-```text
-
-1800_202630_BBY17/
-├── public/
-│   └── images/                 # Activity images and website assets
-│
-├── src/
-│   ├── components/
-│   │   ├── bottom-navbar.js    # Bottom navigation
-│   │   ├── site-footer.js      # Shared footer
-│   │   └── site-navbar.js      # Shared navigation bar
-│   │
-│   ├── styles/
-│   │   └── style.css           # Website styling
-│   │
-│   ├── activitiesData.js       # Activity data
-│   ├── activity.js             # Activity details
-│   ├── app.js                  # Application logic
-│   ├── authentication.js       # Authentication functions
-│   ├── expectations.js         # What to Expect page
-│   ├── expectationsData.js     # Activity-specific beginner information
-│   ├── firebaseConfig.js       # Firebase configuration
-│   ├── firstTimers.js          # First-timer information
-│   ├── headerAvatar.js         # User avatar
-│   ├── loginSignup.js          # Login and signup
-│   ├── main.js                 # Main page functionality
-│   ├── navbar.js               # Navigation functionality
-│   ├── profile.js              # User profile
-│   ├── reviews.js              # Reviews
-│   ├── savedActivities.js      # Saved and completed activities
-│   ├── seedActivities.js       # Activity database setup
-│   ├── settings.js             # User settings
-│   └── theme.js                # Theme functionality
-│
-├── activity.html
-├── addactivities.html
-├── discover.html
-├── expectations.html
-├── firstTimers.html
-├── index.html
-├── login.html
-├── main.html
-├── profile.html
-├── reviews.html
-├── savedActivities.html
-├── settings.html
-├── skeleton.html
-│
-├── .env_template              # Environment variable template
-├── .gitignore
-├── package.json               # Project dependencies and scripts
-├── package-lock.json
-└── README.md                  # Project documentation
 ```
+elmo-hikes/
+├── src/
+│   ├── main.js
+├── styles/
+│   └── style.css
+├── public/
+├── images/
+├── index.html
+├── package.json
+├── README.md
+```
+
 ---
 
 
@@ -179,23 +131,21 @@ Hana - BCIT CST student who enjoys learning programing and building new things. 
 ---
 
 
-
 ## Limitations and Future Work
-
 ### Limitations
-- Activity information is currently limited to the data available in the application.
-- What to Expect information provides general beginner guidance and may not reflect every activity provider's exact requirements.
-- Activity images are stored locally in the project rather than Firebase Storage.
-- Some accessibility features could be improved.
+
+- Limited trail details (e.g., no live trail conditions).
+- Accessibility features can be further improved.
 
 ### Future Work
-- Add more activities and categories.
-- Improve search and filtering options.
-- Integrate maps and directions for activity locations.
-- Add more detailed activity provider information.
-- Explore Firebase Storage for managing images.
 
+- Implement map view and trailhead directions.
+- Add filtering and sorting options (e.g., by difficulty, distance).
+- Create a dark mode for better usability in low-light conditions.
 
 ---
 
 
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.

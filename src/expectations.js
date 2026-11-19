@@ -30,8 +30,6 @@ async function displayExpectations() {
         }
 
         const activity = activitySnap.data();
-        console.log("Firebase activity name:", activity.name);
-        console.log("Custom expectations:", expectations[activity.name]);
 
         // Display activity name and image
         nameElement.textContent = activity.name;
@@ -51,12 +49,6 @@ async function displayExpectations() {
         document.getElementById("requirementsText").textContent = info.requirements;
         document.getElementById("safetyText").textContent = info.safety;
         document.getElementById("prepareText").textContent = info.howToPrepare;
-        //-----------------for bullet points---------------------------------------------
-        ["doText", "bringText", "requirementsText", "safetyText", "prepareText"]
-            .forEach(function (id) {
-                document.getElementById(id).style.whiteSpace = "pre-line";
-            });
-        //-------------------------------------------------------------------------------
 
     } catch (error) {
         console.error("Error loading expectations:", error);
