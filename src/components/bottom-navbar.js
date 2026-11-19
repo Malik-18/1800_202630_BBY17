@@ -11,7 +11,7 @@ class BottomNavbar extends HTMLElement {
             <style>
                 /* Default: black like before */
                 .nav-item-bottom {
-                    color: #212529;
+                    color: #888888;
                     transition: color 0.2s ease, transform 0.2s ease;
                 }
 

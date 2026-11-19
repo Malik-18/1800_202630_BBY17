@@ -235,3 +235,8 @@ async function toggleFavourite(heart, hikeID) {
     heart.classList.replace("bi-heart", "bi-heart-fill");
   }
 }
+
+
+//---------for loading pictures-----------
+
+// img.loading = "lazy";

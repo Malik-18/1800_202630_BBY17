@@ -12,6 +12,8 @@
 
     <script type="module" src="/src/components/bottom-navbar.js"></script>
 
+   <link rel="icon" href="public/favicon.ico" type="image/x-icon">
+   
     <!-- Web Components for shared navbar and footer layout -->
     <!-- <script type="module" src="/src/components/site-navbar.js"></script> -->
     <!-- <script type="module" src="/src/components/site-footer.js"></script> -->
@@ -26,11 +28,12 @@
     <!-- <site-navbar></site-navbar> -->
 
     <!-- Main content goes here -->
-    <main class="container py-4 pb-5 mb-5">
+    <!-- Extra bottom padding so the last review isn't hidden behind the fixed button + bottom navbar -->
+    <main class="container py-4" style="padding-bottom: 180px;">
 
         <!-- Back Button -->
         <div class="d-flex align-items-center mb-4">
-            <a id="backToActivity" href="/discover.html" class="text-dark fs-3 me-4">
+            <a id="backToActivity" href="/discover.html" class="text-dark fs-3 me-4" aria-label="Back to activity">
                 <i class="bi bi-chevron-left"></i>
             </a>
 
@@ -38,11 +41,15 @@
         </div>
 
         <!-- Activity Name -->
-        <h2 id="activityName" class="fs-5 fw-bold mb-4">
+        <h2 id="activityName" class="fs-5 fw-bold mb-1">
             Loading...
         </h2>
 
-        <!-- Reviews List -->
+        <p class="text-secondary small mb-4">
+            Tips and reviews from First Timers
+        </p>
+
+        <!-- Reviews List (filled in by reviews.js) -->
         <div id="reviewsList">
 
             <p class="text-secondary text-center">
@@ -51,20 +58,17 @@
 
         </div>
 
-        <!-- Share Experience -->
-        <div class="text-center mt-5">
-            <p class="text-secondary small">
-                Tried this activity? Share your experience!
-            </p>
-            <button id="shareExperienceBtn" class="btn btn-dark rounded-pill px-4" type="button" disabled>
-                Share Experience
-            </button>
-            <p class="small text-secondary mt-2">
-                Coming soon
-            </p>
-        </div>
-
     </main>
+
+    <!-- Share Experience button: fixed to the bottom of the screen, just above the bottom navbar.
+         The extra bottom padding lets the white background slide underneath the navbar. -->
+    <div class="position-fixed bottom-0 start-0 end-0 bg-white pt-2" style="padding-bottom: 95px;">
+        <div class="container">
+            <a id="shareExperienceBtn" href="#" class="btn btn-dark rounded-pill w-100 py-2">
+                Share Experience
+            </a>
+        </div>
+    </div>
 
     <bottom-navbar></bottom-navbar>
 
