@@ -25,7 +25,7 @@ if (activityId) {
     document.getElementById("seeReviewsBtn").href = reviewsLink;
 }
 
-// ---- Auth guard: only logged-in users can share an experience ----
+// ---- Auth guard only logged in users can share an experience ----
 onAuthReady(function (user) {
     if (!user) {
         location.href = "index.html";   // Not logged in → go away
@@ -34,7 +34,7 @@ onAuthReady(function (user) {
     currentUser = user;                 // Logged in → remember them
 });
 
-// ---- Show which activity this review is for ----
+// ---- Show which activity this review is for -----
 async function displayActivityName() {
     const nameElement = document.getElementById("activityName");
 

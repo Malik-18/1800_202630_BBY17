@@ -34,92 +34,377 @@
 
             <div class="col-12 col-lg-8">
 
-                <!-- Activity Navigation Buttons -->
-
-                <div class="row g-3 text-center my-4">
-
-                    <div class="col-4">
-                        <a id="firstTimersBtn" href="#"
-                            class="btn btn-outline-secondary rounded-4 w-100 py-3 d-flex flex-column align-items-center gap-2">
-                            <i class="bi bi-people-fill fs-3"></i>
-                            <span class="small">First Timers</span>
-                        </a>
-                    </div>
-
-                    <div class="col-4">
-                        <a id="expectationsBtn" href="#"
-                            class="btn btn-outline-secondary rounded-4 w-100 py-3 d-flex flex-column align-items-center gap-2">
-                            <i class="bi bi-list-check fs-3"></i>
-                            <span class="small">Expectations</span>
-                        </a>
-                    </div>
-
-                    <div class="col-4">
-                        <a id="reviewsBtn" href="#"
-                            class="btn btn-outline-secondary rounded-4 w-100 py-3 d-flex flex-column align-items-center gap-2">
-                            <i class="bi bi-star fs-3"></i>
-                            <span class="small">Reviews</span>
-                        </a>
-                    </div>
-
-                </div>
 
 
                 <!-- Activity Image -->
                 <img id="activityImage" class="img-fluid rounded-4 w-100 object-fit-cover" style="max-height: 350px;"
                     alt="Activity image">
 
-                <!-- Activity Name -->
-                <h1 id="activityName" class="fw-bold mt-4">
-                    Loading...
-                </h1>
 
-                <!-- Category -->
-                <p id="activityCategory" class="text-secondary"></p>
 
-                <!-- Description -->
-                <div class="mt-4">
-                    <h2 class="fs-5 fw-bold">About this activity</h2>
-                    <p id="activityDescription"></p>
+                <!------------------ Activity Details Navigation ----------------------------------->
+                <nav class="nav nav-underline justify-content-center gap-4 mt-4 fs-5 fw-semibold">
+
+                    <a class="nav-link active text-dark" href="#activityOverview">
+                        Overview
+                    </a>
+
+                    <a class="nav-link text-dark" href="#activityExpectations">
+                        What to Expect
+                    </a>
+
+                    <a class="nav-link text-dark" href="#activityFirstTimers">
+                        join
+                    </a>
+
+                    <a class="nav-link text-dark" href="#activityReviews">
+                        Reviews
+                    </a>
+
+                </nav>
+
+                <div id="activityOverview">
+                    <!-- Activity Name -->
+                    <h1 id="activityName" class="fw-bold mt-4">
+
+                        Loading...
+                    </h1>
+
+                    <!-- Category -->
+                    <p id="activityCategory" class="text-secondary"></p>
+
+                    <!-- Description -->
+                    <div class="mt-4">
+                        <h2 class="fs-5 fw-bold">About this activity</h2>
+                        <p id="activityDescription"></p>
+                    </div>
+
+                    <!-- Difficulty -->
+                    <div class="mt-4">
+                        <h2 class="fs-5 fw-bold">Difficulty</h2>
+                        <p id="activityDifficulty"></p>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="mt-4">
+                        <h2 class="fs-5 fw-bold">Location</h2>
+                        <p id="activityLocation"></p>
+                    </div>
+
+                    <!-- Duration -->
+                    <div class="mt-4">
+                        <h2 class="fs-5 fw-bold">
+                            <i class="bi bi-clock"></i> Duration
+                        </h2>
+                        <p id="activityDuration"></p>
+                    </div>
+
+                    <!-- Price -->
+                    <div class="mt-4">
+                        <h2 class="fs-5 fw-bold">
+                            <i class="bi bi-cash"></i> Price
+                        </h2>
+                        <p id="activityPrice"></p>
+                    </div> <!-- End Activity Overview -->
+
+
+                    <!-- save to try button -->
+                    <div class="my-4 pb-5 text-center">
+                        <button id="saveToTryBtn" type="button" class="btn btn-outline-dark rounded-pill px-6 py-2"
+                            disabled>
+                            <i class="bi bi-heart me-2"></i>
+                            Save to Try
+                        </button>
+                    </div>
+
+                    <!--------------------------- What to Expect Section ------------------------------------------>
+
+                    <div class="position-relative text-center mb-4">
+                        <h2 id="activityExpectations" class="fw-bold fs-3 mb-0">
+                            What to Expect
+                        </h2>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg-8">
+
+
+                            <p id="activityName" class="fw-bold fs-5 mt-3 mb-3"></p>
+
+                            <!-- Accordion: only one section is open at a time -->
+                            <div class="accordion accordion-flush border rounded-4 overflow-hidden"
+                                id="expectationsAccordion"
+                                style="--bs-accordion-active-bg: transparent; --bs-accordion-active-color: inherit; --bs-accordion-btn-focus-box-shadow: none;">
+
+                                <!-- What you'll do -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseDo">
+                                            <i class="bi bi-check-circle me-3"></i>What you'll do
+                                        </button>
+                                    </h2>
+                                    <div id="collapseDo" class="accordion-collapse collapse"
+                                        data-bs-parent="#expectationsAccordion">
+                                        <div id="doText" class="accordion-body small"></div>
+                                    </div>
+                                </div>
+
+                                <!-- What to bring -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseBring">
+                                            <i class="bi bi-check-circle me-3"></i>What to bring
+                                        </button>
+                                    </h2>
+                                    <div id="collapseBring" class="accordion-collapse collapse"
+                                        data-bs-parent="#expectationsAccordion">
+                                        <div id="bringText" class="accordion-body small"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Requirements -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseRequirements">
+                                            <i class="bi bi-check-circle me-3"></i>Requirements
+                                        </button>
+                                    </h2>
+                                    <div id="collapseRequirements" class="accordion-collapse collapse"
+                                        data-bs-parent="#expectationsAccordion">
+                                        <div id="requirementsText" class="accordion-body small"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Safety information -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseSafety">
+                                            <i class="bi bi-check-circle me-3"></i>Safety information
+                                        </button>
+                                    </h2>
+                                    <div id="collapseSafety" class="accordion-collapse collapse"
+                                        data-bs-parent="#expectationsAccordion">
+                                        <div id="safetyText" class="accordion-body small"></div>
+                                    </div>
+                                </div>
+
+                                <!-- How to prepare -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapsePrepare">
+                                            <i class="bi bi-check-circle me-3"></i>How to prepare
+                                        </button>
+                                    </h2>
+                                    <div id="collapsePrepare" class="accordion-collapse collapse"
+                                        data-bs-parent="#expectationsAccordion">
+                                        <div id="prepareText" class="accordion-body small"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!---------------------- join to our first timers--------------------------- -->
+                    <div class="container py-6"></div>
+
+
+                    <div class="container py-2"></div>
+
+
+                    <div class="position-relative text-center mb-4">
+                        <section id="activityFirstTimers" class="mt-5">
+                            <h1 class="fw-bold fs-3 mb-0">join</h1>
+                    </div>
+
+                    <!-- <h1 class="fs-4 mb-0">Join to our First Timers</h1> -->
+
                 </div>
 
-                <!-- Difficulty -->
-                <div class="mt-4">
-                    <h2 class="fs-5 fw-bold">Difficulty</h2>
-                    <p id="activityDifficulty"></p>
-                </div>
+                <!-- Welcome Message -->
+                <div class="text-center mb-4">
 
-                <!-- Location -->
-                <div class="mt-4">
-                    <h2 class="fs-5 fw-bold">Location</h2>
-                    <p id="activityLocation"></p>
-                </div>
-
-                <!-- Duration -->
-                <div class="mt-4">
                     <h2 class="fs-5 fw-bold">
-                        <i class="bi bi-clock"></i> Duration
+                        You're not the only beginner!
                     </h2>
-                    <p id="activityDuration"></p>
+
+                    <p id="firstTimersCount" class="small text-secondary">
+                        Loading First Timers...
+                    </p>
+
                 </div>
 
-                <!-- Price -->
-                <div class="mt-4">
-                    <h2 class="fs-5 fw-bold">
-                        <i class="bi bi-cash"></i> Price
-                    </h2>
-                    <p id="activityPrice"></p>
+                <!-- Participants -->
+                <div id="firstTimersList" class="row row-cols-3 g-3 text-center mb-5">
                 </div>
+
+                <!-- Overview -->
+
+                <!-- Overview -->
+                <section class="mt-5">
+
+                    <h2 class="fs-5 fw-bold">
+                        Everyone starts somewhere
+                    </h2>
+
+                    <p>
+                        Trying something new can feel a little
+                        intimidating, but you don't have to
+                        do it alone.
+                    </p>
+
+                    <p>
+                        Never late to try is a space for people who
+                        are interested in trying this activity
+                        for the first time. Whether you're
+                        feeling excited, nervous, or just curious,
+                        you're welcome here!
+                    </p>
+
+                    <p>
+                        You don't need any previous experience.
+                        Everyone starts as a beginner, and
+                        sometimes knowing that others are
+                        starting too makes taking the first
+                        step a little easier.
+                    </p>
+
+                </section>
+
+                <!-- Join Section -->
+                <div class="bg-light rounded-4 p-4 text-center mt-4">
+
+                    <h3 class="fs-5 fw-bold">
+                        Ready to give it a try?
+                    </h3>
+
+                    <p class="small text-secondary">
+                        Join other first timers and take
+                        the first step toward something new.
+                    </p>
+
+                    <button id="joinFirstTimersBtn" type="button" class="btn btn-dark rounded-pill px-4">
+                        Join First Timers
+                    </button>
+
+                    <p id="joinStatus" class="small text-secondary mt-3 mb-0">
+                    </p>
+
+                </div>
+                <!-----------------------------------review form -------------------------------------->
+
+
+
+                <section id="formSection">
+                    <br>
+                    <div class="container Py-10"></div>
+
+                    <div class="position-relative text-center mb-4">
+                        <section id="activityReviews" class="mt-5">
+                            <h1 class="fw-bold fs-3 mb-0">Share your experience</h1>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg-6">
+
+                            <p id="activityName" class="fw-bold fs-5 text-center mb-3">Loading...</p>
+
+                            <!-- Error message (hidden until needed) -->
+                            <div id="formAlert" class="alert alert-danger d-none" role="alert"></div>
+
+                            <form id="reviewForm" novalidate>
+
+                                <!-- Star rating: shareExperience.js fills in the stars when they are clicked -->
+                                <div id="starRating" class="d-flex justify-content-center gap-3 mb-4">
+                                    <i class="bi bi-star fs-1" role="button" aria-label="1 star"></i>
+                                    <i class="bi bi-star fs-1" role="button" aria-label="2 stars"></i>
+                                    <i class="bi bi-star fs-1" role="button" aria-label="3 stars"></i>
+                                    <i class="bi bi-star fs-1" role="button" aria-label="4 stars"></i>
+                                    <i class="bi bi-star fs-1" role="button" aria-label="5 stars"></i>
+                                </div>
+
+                                <!-- Review text -->
+                                <div class="mb-4">
+                                    <label for="reviewText" class="form-label">
+                                        Share details of your own experience at this activity
+                                    </label>
+                                    <textarea id="reviewText" class="form-control" rows="6"
+                                        placeholder="What did you enjoy? What do you wish you knew before you started?"
+                                        required></textarea>
+                                </div>
+
+                                <!-- One optional picture. Clicking the box opens the file picker. -->
+                                <div class="mb-4">
+                                    <label for="imageInput"
+                                        class="d-flex flex-column align-items-center justify-content-center bg-light rounded-4 overflow-hidden mx-auto"
+                                        style="width: 180px; height: 180px; cursor: pointer;">
+                                        <span id="addPictureContent" class="text-center text-secondary">
+                                            <i class="bi bi-plus-lg fs-1 d-block"></i>
+                                            <span class="small">Add your picture</span>
+                                        </span>
+                                        <img id="previewImage" class="d-none w-100 h-100 object-fit-cover"
+                                            alt="Selected picture">
+                                    </label>
+                                    <input type="file" id="imageInput" class="d-none" accept="image/*">
+
+                                    <div class="text-center">
+                                        <button id="removeImageBtn" type="button"
+                                            class="btn btn-link btn-sm text-secondary d-none">
+                                            Remove picture
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <button id="submitBtn" type="submit" class="btn btn-dark rounded-pill w-100 py-2">
+                                    Share Experience
+                                </button>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- Screen 2: thank-you message (hidden until the review is saved) -->
+                <section id="thanksSection" class="d-none">
+
+                    <div class="text-end">
+                        <a id="closeLink" href="/discover.html" class="text-dark fs-2" aria-label="Close">
+                            <i class="bi bi-x-lg"></i>
+                        </a>
+                    </div>
+
+                    <div class="text-center py-5 my-5">
+                        <i class="bi bi-patch-check-fill" style="font-size: 8rem;"></i>
+                        <h2 class="fs-3 mt-4">Thank you for sharing your experience with us</h2>
+                        <a id="seeReviewsBtn" href="/discover.html" class="btn btn-dark rounded-pill px-4 mt-3">
+                            See all reviews
+                        </a>
+                    </div>
+                    <!-- ---------------------Display the reviews-------------------------------------- -->
+                    
+                    <section id="reviewsListSection" class="mt-5">
+                        <h2 class="fw-bold fs-4 mb-4">
+                            Community Reviews
+                        </h2>
+                        <div id="reviewsList">
+                            <p class="text-secondary">Loading reviews...</p>
+                        </div>
+
+                    </section>
+
+                </section>
 
             </div>
 
         </div>
 
-        <div class="my-4 pb-5 text-center">
-            <button id="saveToTryBtn" type="button" class="btn btn-outline-dark rounded-pill px-6 py-2" disabled>
-                <i class="bi bi-heart me-2"></i>
-                Save to Try
-            </button>
         </div>
 
     </main>

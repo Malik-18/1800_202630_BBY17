@@ -111,8 +111,8 @@ Once the application is running:
 ├── src/
 │   ├── components/
 │   │   ├── bottom-navbar.js    # Bottom navigation
-│   │   ├── site-footer.js      # Shared footer
 │   │   └── site-navbar.js      # Shared navigation bar
+│   │   
 │   │
 │   ├── styles/
 │   │   └── style.css           # Website styling
@@ -120,6 +120,7 @@ Once the application is running:
 │   ├── activitiesData.js       # Activity data
 │   ├── activity.js             # Activity details
 │   ├── app.js                  # Application logic
+│   ├── discover.js             # Searching Activities
 │   ├── authentication.js       # Authentication functions
 │   ├── expectations.js         # What to Expect page
 │   ├── expectationsData.js     # Activity-specific beginner information

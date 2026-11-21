@@ -5,7 +5,7 @@ const bullets = (...items) => items.map(item => `• ${item}`).join("\n");
 export const defaultExpectations = {
     whatYoullDo: `Your experience will depend on the activity and provider.
 
-Before booking, ask:
+                        Before booking, ask:
 ${bullets(
         "What happens during the session?",
         "Is it suitable for complete beginners?",
@@ -25,7 +25,7 @@ ${bullets(
 
     requirements: `Requirements vary by provider.
 
-Confirm:
+                        Confirm:
 ${bullets(
         "Minimum age and experience requirements",
         "Any licences or identification needed",
@@ -35,7 +35,7 @@ ${bullets(
 
     safety: `Ask the provider about safety instructions, supervision, equipment, and emergency procedures.
 
-Tell the instructor about any concerns that may affect your participation. You can ask questions before starting.`,
+        Tell the instructor about any concerns that may affect your participation. You can ask questions before starting.`,
 
     howToPrepare: `Before your session:
 ${bullets(
@@ -52,7 +52,7 @@ export const expectations = {
     "Beginner Hiking": {
         whatYoullDo: `A beginner hike usually starts with a meeting point and a short route introduction.
 
-You can expect to:
+        You can expect to:
 ${bullets(
             "Meet your guide or group, if the hike is organized",
             "Learn about the trail, distance, and expected pace",
@@ -61,7 +61,7 @@ ${bullets(
             "Return to the agreed finishing point"
         )}
 
-Ask about the total distance, elevation gain, and estimated walking time. A trail described as beginner-friendly can still include hills, roots, and rocks.`,
+        Ask about the total distance, elevation gain, and estimated walking time. A trail described as beginner-friendly can still include hills, roots, and rocks.`,
 
         whatToBring: `Recommended essentials:
 ${bullets(
@@ -72,11 +72,11 @@ ${bullets(
             "A charged phone"
         )}
 
-Ask whether hiking poles or other equipment are recommended.`,
+        Ask whether hiking poles or other equipment are recommended.`,
 
         requirements: `Previous hiking experience is usually not necessary for an introductory hike.
 
-Before booking, confirm:
+        Before booking, confirm:
 ${bullets(
             "Trail distance and elevation gain",
             "Whether the route has steep or uneven sections",
@@ -95,7 +95,7 @@ ${bullets(
             "Tell someone your route and expected return time"
         )}
 
-For an unguided hike, carry suitable navigation and emergency supplies. Do not rely only on mobile reception.`,
+        For an unguided hike, carry suitable navigation and emergency supplies. Do not rely only on mobile reception.`,
 
         howToPrepare: `Before the hike:
 ${bullets(
@@ -106,13 +106,13 @@ ${bullets(
             "Eat beforehand and allow enough travel time"
         )}
 
-If you are nervous about your fitness, ask whether the group can accommodate a slower pace.`
+        If you are nervous about your fitness, ask whether the group can accommodate a slower pace.`
     },
 
     "Kayaking": {
         whatYoullDo: `A beginner session commonly starts on land with equipment fitting and safety instructions.
 
-You may:
+        You may:
 ${bullets(
             "Learn how to hold and use a paddle",
             "Practise getting into and out of the kayak",
@@ -121,7 +121,7 @@ ${bullets(
             "Learn what to do if the kayak tips over"
         )}
 
-Ask whether the session uses single or tandem kayaks and whether you will practise a capsize or rescue.`,
+        Ask whether the session uses single or tandem kayaks and whether you will practise a capsize or rescue.`,
 
         whatToBring: `Bring:
 ${bullets(
@@ -132,7 +132,7 @@ ${bullets(
             "A waterproof bag for essentials, if permitted"
         )}
 
-Confirm whether the kayak, paddle, and properly fitted personal flotation device are included.`,
+        Confirm whether the kayak, paddle, and properly fitted personal flotation device are included.`,
 
         requirements: `Before booking, confirm:
 ${bullets(
@@ -143,7 +143,7 @@ ${bullets(
             "Whether participants must be comfortable in the water"
         )}
 
-Ask about accessibility or support needs in advance.`,
+        Ask about accessibility or support needs in advance.`,
 
         safety: `Water activities carry risks, including cold-water exposure and capsizing.
 
@@ -155,7 +155,7 @@ ${bullets(
             "Tell the instructor immediately if you feel tired or uncomfortable"
         )}
 
-Ask how rescues are handled and what happens if weather or water conditions change.`,
+        Ask how rescues are handled and what happens if weather or water conditions change.`,
 
         howToPrepare: `Before arriving:
 ${bullets(
@@ -166,13 +166,13 @@ ${bullets(
             "Arrive early enough for equipment fitting"
         )}
 
-Let the instructor know if this is your first time on the water.`
+        Let the instructor know if this is your first time on the water.`
     },
 
     "Camping": {
         whatYoullDo: `A beginner camping experience may include an introduction to the campsite and basic outdoor routines.
 
-Depending on the program, you may:
+        Depending on the program, you may:
 ${bullets(
             "Learn how to choose and prepare a tent location",
             "Set up a tent and sleeping area",
