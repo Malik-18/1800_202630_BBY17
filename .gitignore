@@ -14,8 +14,6 @@ node_modules/
 # Environment variables
 .env
 .env.*
-!.env_template
-!.env.example
 
 # Build files
 dist/
