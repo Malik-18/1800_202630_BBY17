@@ -1,5 +1,96 @@
-.card-image {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    /* 60% Background */
+    --background: #f1f7ee;  
+
+    /* 30% Primary and Secondary */
+    --primary: #4B5945;
+    --secondary: #6d7e54;
+
+    /* 10% Accent */
+    --accent: #9A7055;
+
+    /* Font */
+    --font: "Poppins", system-ui, sans-serif;
+
+    /* Bootstrap variables */
+    --bs-body-bg: var(--background);
+    --bs-body-font-family: var(--font);
+}
+
+.bg-primary {
+    background-color: var(--primary) !important;
+}
+
+.text-primary {
+    color: var(--primary) !important;
+}
+
+.bg-secondary {
+    background-color: var(--secondary) !important;
+}
+
+.text-secondary {
+    color: var(--secondary) !important;
+}
+
+.bg-accent {
+    background-color: var(--accent);
+}
+.btn-primary {
+    --bs-btn-bg: var(--primary);
+    --bs-btn-border-color: var(--primary);
+    --bs-btn-color: white;
+
+    --bs-btn-hover-bg: color-mix(in srgb, var(--primary), black 25%);
+    --bs-btn-hover-border-color: var(--primary);
+    --bs-btn-hover-color: white;
+
+    --bs-btn-active-bg: var(--primary);
+    --bs-btn-active-border-color: var(--primary);
+    --bs-btn-active-color: white;
+}
+
+.btn-secondary {
+    --bs-btn-bg: var(--secondary);
+    --bs-btn-border-color: var(--secondary);
+    --bs-btn-color: black;
+
+    --bs-btn-hover-bg: color-mix(in srgb, var(--secondary), black 25%);
+    --bs-btn-hover-border-color: var(--secondary);
+    --bs-btn-hover-color: white;
+
+    --bs-btn-active-bg: var(--secondary);
+    --bs-btn-active-border-color: var(--secondary);
+    --bs-btn-active-color: black;
+}
+
+/* for dark mode problem after adding our color pallet */
+/* Dark Mode */
+
+
+[data-bs-theme="dark"] {
+    --background: #1c241b;
+    --primary: #a8bc98;
+    --secondary: #b0bf96;
+    --accent: #c69b7d;
+
+    --bs-body-bg: var(--background);
+    --bs-body-color: #f1f7ee;
+    --bs-secondary-bg: #293328;
+    --bs-tertiary-bg: #323e30;
+    --bs-border-color: #465343;
+}
+
+[data-bs-theme="dark"] .btn-primary {
+    --bs-btn-color: #1c241b;
+    --bs-btn-hover-color: #1c241b;
+    --bs-btn-active-color: #1c241b;
+}
+
+[data-bs-theme="dark"] .btn-secondary {
+    --bs-btn-color: #1c241b;
+    --bs-btn-hover-color: #1c241b;
+    --bs-btn-active-color: #1c241b;
 }

@@ -15,8 +15,8 @@
     <!-- Bottom Navbar -->
     <script type="module" src="/src/components/bottom-navbar.js"></script>
 
-   <link rel="icon" href="public/favicon.ico" type="image/x-icon">
-       
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
 </head>
 
 <body class="bg-body">
@@ -33,8 +33,16 @@
         </div>
 
         <div class="list-group list-group-flush mx-auto" style="max-width: 480px;">
+            <!----------------- Dark mode ------------------------------------------->
+            <div class="list-group-item bg-transparent d-flex align-items-center gap-3 py-4">
+                <i class="bi bi-moon-fill fs-3 text-secondary"></i>
+                <label for="darkModeToggle" class="flex-grow-1 fs-5 mb-0">Dark Mode</label>
+                <div class="form-check form-switch fs-4 mb-0">
+                    <input class="form-check-input" type="checkbox" id="darkModeToggle">
+                </div>
+            </div>
 
-            <!-- Notifications -->
+            <!-------------------- Notifications ---------------------------------------->
             <div class="list-group-item bg-transparent d-flex align-items-center gap-3 py-4">
                 <i class="bi bi-bell-fill fs-3 text-secondary"></i>
                 <label for="notificationsToggle" class="flex-grow-1 fs-5 mb-0">Notifications</label>
@@ -43,7 +51,7 @@
                 </div>
             </div>
 
-            <!-- Preferred language -->
+            <!---------------- Preferred language ----------------------------------------->
             <div class="list-group-item bg-transparent d-flex align-items-center gap-3 py-4">
                 <label for="languageSelect" class="fs-5 mb-0">Preferred Language:</label>
                 <select id="languageSelect" class="form-select w-auto">
@@ -54,14 +62,14 @@
                 </select>
             </div>
 
-            <!-- Help and support -->
+            <!------------------------ Help and support ----------------------------------------------------->
             <a href="#"
                 class="list-group-item list-group-item-action bg-transparent d-flex align-items-center gap-3 py-4">
                 <i class="bi bi-info-circle-fill fs-3 text-secondary"></i>
                 <span class="fs-5">Help and Support</span>
             </a>
 
-            <!-- Account privacy -->
+            <!------------ Account privacy -->
             <a href="#"
                 class="list-group-item list-group-item-action bg-transparent d-flex align-items-center gap-3 py-4">
                 <i class="bi bi-lock-fill fs-3 text-secondary"></i>

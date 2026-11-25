@@ -18,7 +18,7 @@
     <!-- Bottom Navbar Component -->
     <script type="module" src="/src/components/bottom-navbar.js"></script>
 
-   <link rel="icon" href="public/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
 
 <body class="bg-white">
@@ -113,7 +113,7 @@
                         <button id="saveToTryBtn" type="button" class="btn btn-outline-dark rounded-pill px-6 py-2"
                             disabled>
                             <i class="bi bi-heart me-2"></i>
-                            Save to Try
+                            Save to My Activities
                         </button>
                     </div>
 
@@ -164,7 +164,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Requirements -->
+                                <!-- Requirements ------------------------------------>
                                 <div class="accordion-item">
                                     <h2 class="accordion-header">
                                         <button class="accordion-button collapsed" type="button"
@@ -178,7 +178,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Safety information -->
+                                <!-- Safety information -------------------------->
                                 <div class="accordion-item">
                                     <h2 class="accordion-header">
                                         <button class="accordion-button collapsed" type="button"
@@ -192,7 +192,7 @@
                                     </div>
                                 </div>
 
-                                <!-- How to prepare -->
+                                <!-- How to prepare ------------------------------------>
                                 <div class="accordion-item">
                                     <h2 class="accordion-header">
                                         <button class="accordion-button collapsed" type="button"
@@ -275,6 +275,21 @@
                     </p>
 
                 </section>
+                <!-- Upcoming Session -->
+                <div class="border rounded-4 p-4 mt-4">
+                    <h3 class="fs-5 fw-bold mb-3">Upcoming Session</h3>
+                    <p>
+                        <i class="bi bi-calendar-event me-2"></i>
+                        <span id="eventDate">Loading...</span>
+                    </p>
+                    <p>
+                        <i class="bi bi-clock me-2"></i>
+                        <span id="eventTime">Loading...</span>
+                    </p>
+                    <p class="small text-secondary mb-0">
+                        Sample session - Demo only
+                    </p>
+                </div>
 
                 <!-- Join Section -->
                 <div class="bg-light rounded-4 p-4 text-center mt-4">
@@ -288,8 +303,8 @@
                         the first step toward something new.
                     </p>
 
-                    <button id="joinFirstTimersBtn" type="button" class="btn btn-dark rounded-pill px-4">
-                        Join First Timers
+                    <button id="joinFirstTimersBtn" type="button" class="btn btn-primary rounded-pill px-4" disabled>
+                        Join This Session
                     </button>
 
                     <p id="joinStatus" class="small text-secondary mt-3 mb-0">
@@ -388,16 +403,15 @@
                         </a>
                     </div>
                     <!-- ---------------------Display the reviews-------------------------------------- -->
-                    
-                    <section id="reviewsListSection" class="mt-5">
-                        <h2 class="fw-bold fs-4 mb-4">
-                            Community Reviews
-                        </h2>
-                        <div id="reviewsList">
-                            <p class="text-secondary">Loading reviews...</p>
-                        </div>
 
-                    </section>
+                </section>
+                <section id="reviewsListSection" class="mt-5">
+                    <h2 class="fw-bold fs-4 mb-4">
+                        Community Reviews
+                    </h2>
+                    <div id="reviewsList">
+                        <p class="text-secondary">Loading reviews...</p>
+                    </div>
 
                 </section>
 
@@ -417,6 +431,7 @@
     <!-- JavaScript -->
     <script type="module" src="/src/app.js"></script>
     <script type="module" src="/src/activity.js"></script>
+    <!-- <script type="module" src="/src/addEventDates.js"></script> only for adding date and time for the first time -->
 
 </body>
 
