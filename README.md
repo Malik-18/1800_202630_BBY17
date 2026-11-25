@@ -122,16 +122,13 @@ Once the application is running:
 │   ├── app.js                  # Application logic
 │   ├── discover.js             # Searching Activities
 │   ├── authentication.js       # Authentication functions
-│   ├── expectations.js         # What to Expect page
 │   ├── expectationsData.js     # Activity-specific beginner information
 │   ├── firebaseConfig.js       # Firebase configuration
-│   ├── firstTimers.js          # First-timer information
 │   ├── headerAvatar.js         # User avatar
 │   ├── loginSignup.js          # Login and signup
 │   ├── main.js                 # Main page functionality
 │   ├── navbar.js               # Navigation functionality
 │   ├── profile.js              # User profile
-│   ├── reviews.js              # Reviews
 │   ├── savedActivities.js      # Saved and completed activities
 │   ├── seedActivities.js       # Activity database setup
 │   ├── settings.js             # User settings
@@ -140,13 +137,10 @@ Once the application is running:
 ├── activity.html
 ├── addactivities.html
 ├── discover.html
-├── expectations.html
-├── firstTimers.html
 ├── index.html
 ├── login.html
 ├── main.html
 ├── profile.html
-├── reviews.html
 ├── savedActivities.html
 ├── settings.html
 ├── skeleton.html

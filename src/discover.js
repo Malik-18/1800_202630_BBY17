@@ -86,10 +86,22 @@ function displayActivities(activities) {
     const img = newCard.querySelector(".card-image");
     img.src = activity.imageURL;
     img.alt = `${activity.name} image`;
+    img.loading = "lazy";
 
     // Link to activity details
-    newCard.querySelector(".read-more").href =
+    const activityURL =
       `/activity.html?docID=${encodeURIComponent(activity.id)}`;
+
+    newCard.querySelector(".read-more").href = activityURL;
+
+    // Make the whole card clickable
+    const card = newCard.querySelector(".card");
+
+    card.style.cursor = "pointer";
+
+    card.addEventListener("click", function () {
+      window.location.href = activityURL;
+    });
 
     setupHeart(newCard, activity.id);
 
@@ -103,7 +115,6 @@ function displayActivities(activities) {
 
 
 // Search and category filtering
-
 function filterActivities() {
 
   const searchText = document.getElementById("searchInput")
@@ -124,7 +135,6 @@ function filterActivities() {
 
   displayActivities(filteredActivities);
 }
-
 
 // Search event
 document.getElementById("searchInput").addEventListener("input", filterActivities);
@@ -205,7 +215,10 @@ function setupHeart(card, hikeID) {
   }
 
   // Connect it: "heart, when you are clicked, toggle this hike"
-  heart.addEventListener("click", function () {
+  heart.addEventListener("click", function (event) {
+    event.stopPropagation();
+    event.preventDefault();
+
     toggleFavourite(heart, hikeID);
   });
 }
@@ -223,6 +236,7 @@ async function toggleFavourite(heart, hikeID) {
     // Filled → REMOVE from favourites
     // [BACK END] Remove this hike's ID from the user's favourites array
     await setDoc(userRef, { favourites: arrayRemove(hikeID) }, { merge: true });
+    favourites = favourites.filter(id => id !== hikeID);
     // [FRONT END] Show the empty heart
     heart.classList.replace("bi-heart-fill", "bi-heart");
 
@@ -231,6 +245,8 @@ async function toggleFavourite(heart, hikeID) {
     // Empty → ADD to favourites
     // [BACK END] Add this hike's ID to the user's favourites array
     await setDoc(userRef, { favourites: arrayUnion(hikeID) }, { merge: true });
+    
+    favourites.push(hikeID);
     // [FRONT END] Show the filled heart
     heart.classList.replace("bi-heart", "bi-heart-fill");
   }
@@ -239,4 +255,4 @@ async function toggleFavourite(heart, hikeID) {
 
 //---------for loading pictures-----------
 
-// img.loading = "lazy";
+

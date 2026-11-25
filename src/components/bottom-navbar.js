@@ -3,6 +3,12 @@ import { applyTheme } from "../theme.js";
 import "../styles/dark-mode.css";
 applyTheme();
 
+import { onAuthReady } from "../authentication.js";
+
+onAuthReady((user) => {
+    applyTheme(user);
+});
+
 class BottomNavbar extends HTMLElement {
     constructor() {
         super();
@@ -28,7 +34,7 @@ class BottomNavbar extends HTMLElement {
                 }
             </style>
 
-            <nav class="navbar fixed-bottom bg-white border-top">
+            <nav class="navbar fixed-bottom bg-body border-top">
                 <div class="container-fluid d-flex justify-content-around py-1">
 
                     <a href="/main.html" class="nav-item-bottom text-center text-decoration-none">

@@ -9,7 +9,8 @@ import {
     arrayRemove,
     collection,
     addDoc,
-    serverTimestamp
+    serverTimestamp,
+    deleteDoc
 } from "firebase/firestore";
 import { expectations, defaultExpectations } from "./expectationsData.js";
 
@@ -39,6 +40,11 @@ async function displayActivityInfo() {
         }
 
         const activity = activitySnap.data();
+        // Display session date and time
+        document.getElementById("eventDate").textContent =
+            activity.eventDate || "Date to be announced";
+        document.getElementById("eventTime").textContent =
+            activity.eventTime || "Time to be announced";
 
         // -----------Display activity name
         nameElement.textContent = activity.name;
@@ -142,9 +148,7 @@ displayExpectations();
 /* ---------------- SAVE TO TRY ---------------- */
 
 const saveButton = document.getElementById("saveToTryBtn");
-
 onAuthReady(async function (user) {
-
     if (!saveButton) return;
 
     if (!user) {
@@ -168,10 +172,11 @@ onAuthReady(async function (user) {
         function updateSaveButton() {
             if (favourites.includes(activityId)) {
                 saveButton.innerHTML =
-                    '<i class="bi bi-check-lg me-2"></i>Saved to Try';
-            } else {
+                    '<i class="bi bi-check-lg me-2"></i>Save to My Activities';
+            }
+            else {
                 saveButton.innerHTML =
-                    '<i class="bi bi-heart me-2"></i>Save to Try';
+                    '<i class="bi bi-heart me-2"></i>Save to My Activities';
             }
         }
 
@@ -227,26 +232,20 @@ onAuthReady(async function (user) {
 
 
 //----------------------------- join ------------------------------
-
-
 const joinButton = document.getElementById("joinFirstTimersBtn");
 const joinStatus = document.getElementById("joinStatus");
-
-// Keep the button disabled until authentication is checked
 joinButton.disabled = true;
-
 onAuthReady(async function (user) {
-
+    joinButton.disabled = true;
+    joinButton.onclick = null;
     if (!user) {
-        joinStatus.textContent = "Please log in to join First Timers.";
+        joinStatus.textContent = "Please log in to join.";
         return;
     }
-
     if (!activityId) {
         joinStatus.textContent = "No activity selected.";
         return;
     }
-    // Each user gets one document per activity
     const memberRef = doc(
         db,
         "activities",
@@ -256,36 +255,92 @@ onAuthReady(async function (user) {
     );
 
     try {
-        // Check whether the user already joined
-        const memberSnap = await getDoc(memberRef);
 
-        if (memberSnap.exists()) {
-            joinButton.textContent = "Already Joined";
-            joinStatus.textContent = "You're already a First Timer!";
+        const activityRef = doc(db, "activities", activityId);
+        const activitySnap = await getDoc(activityRef);
+
+        if (!activitySnap.exists()) {
+            joinStatus.textContent = "Activity not found.";
+            return;
+        }
+
+        const activity = activitySnap.data();
+
+        const memberSnap = await getDoc(memberRef);
+        let joined = memberSnap.exists();
+
+        function updateJoinButton() {
+
+            if (joined) {
+                joinButton.textContent = "Cancel Participation";
+                joinStatus.textContent =
+                    "You're in! You have joined this session.";
+
+                joinButton.classList.remove("btn-primary");
+                joinButton.classList.add("btn-outline-danger");
+
+            } else {
+                joinButton.textContent = "Join This Session";
+                joinStatus.textContent = "";
+
+                joinButton.classList.remove("btn-outline-danger");
+                joinButton.classList.add("btn-primary");
+            }
+        }
+
+        updateJoinButton();
+
+        if (!joined && (!activity.eventDate || !activity.eventTime)) {
+            joinStatus.textContent = "Session date is not available yet.";
             return;
         }
 
         joinButton.disabled = false;
-
         joinButton.onclick = async function () {
             joinButton.disabled = true;
 
             try {
-                await setDoc(memberRef, {
-                    userId: user.uid,
-                    name: user.displayName || "First Timer"
-                });
 
-                joinButton.textContent = "Already Joined";
-                joinStatus.textContent = "You joined First Timers successfully!";
+                if (joined) {
+                    const cancel = confirm(
+                        "Are you sure you want to cancel?"
+                    );
+                    if (!cancel) return;
+                    await deleteDoc(memberRef);
+                    joined = false;
+                    updateJoinButton();
+                    joinStatus.textContent =
+                        "Your participation has been cancelled.";
 
+                } else {
+
+                    if (!activity.eventDate || !activity.eventTime) {
+                        joinStatus.textContent =
+                            "Session date is not available yet.";
+                        return;
+                    }
+                    await setDoc(memberRef, {
+                        userId: user.uid,
+                        name: user.displayName || "First Timer",
+                        eventDate: activity.eventDate,
+                        eventTime: activity.eventTime,
+                        joinedAt: serverTimestamp()
+                    });
+                    joined = true;
+                    updateJoinButton();
+                    joinStatus.textContent =
+                        `You're in! See you on ${activity.eventDate} at ${activity.eventTime}.`;
+                }
+                await displayFirstTimers();
             } catch (error) {
-                console.error("Error joining First Timers:", error);
-                joinStatus.textContent = "Could not join. Please try again.";
+                console.error("Error updating participation:", error);
+                joinStatus.textContent =
+                    "Something went wrong. Please try again.";
+
+            } finally {
                 joinButton.disabled = false;
             }
         };
-
     } catch (error) {
         console.error("Error checking membership:", error);
         joinStatus.textContent = "Could not check membership.";
@@ -560,7 +615,9 @@ async function displayReviews() {
                 image.src = review.image;
                 image.alt = "Review picture";
                 image.className = "img-fluid rounded-3 mt-3";
-                image.style.maxHeight = "250px";
+                image.style.width = "100%";
+                image.style.height = "250px";
+                image.style.objectFit = "cover";
 
                 card.appendChild(image);
             }

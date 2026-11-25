@@ -1,14 +1,23 @@
-// Shared helpers for dark mode. Uses Bootstrap 5.3's data-bs-theme attribute.
-// Import applyTheme() on any page that should respect the saved theme.
- 
-export function applyTheme() {
-    const isDark = localStorage.getItem("darkMode") === "true";
-    document.documentElement.setAttribute("data-bs-theme", isDark ? "dark" : "light");
+// ----------------Apply the theme for the current user-------------------
+export function applyTheme(user) {
+
+    let isDark = false;
+    if (user) {
+        const key = `darkMode_${user.uid}`;
+        isDark = localStorage.getItem(key) === "true";}
+
+    document.documentElement.setAttribute(
+        "data-bs-theme",
+        isDark ? "dark" : "light");
     return isDark;
 }
- 
-export function setDarkMode(isDark) {
-    localStorage.setItem("darkMode", isDark);
-    applyTheme();
+
+//-------------- Save the theme for the current user----------------
+export function setDarkMode(isDark, user) {
+
+    if (!user) return;
+
+    const key = `darkMode_${user.uid}`;
+    localStorage.setItem(key, String(isDark));
+    applyTheme(user);
 }
- 
